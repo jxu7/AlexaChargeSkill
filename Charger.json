@@ -1,0 +1,83 @@
+{
+  "intents": [
+    {
+      "name": "AMAZON.CancelIntent",
+      "samples": []
+    },
+    {
+      "name": "AMAZON.HelpIntent",
+      "samples": []
+    },
+    {
+      "name": "AMAZON.StopIntent",
+      "samples": []
+    },
+    {
+      "name": "StartCharging",
+      "samples": [
+        "Start charging at station {stationNumber}",
+        "Charge at {stationNumber}",
+        "Start charging",
+        "Charge",
+        "Charge my car",
+        "Charge my car at {stationNumber}"
+      ],
+      "slots": [
+        {
+          "name": "stationNumber",
+          "type": "AMAZON.NUMBER",
+          "samples": [
+            "{stationNumber}"
+          ]
+        }
+      ]
+    }
+  ],
+  "prompts": [
+    {
+      "id": "Confirm.Intent-StartCharging",
+      "promptVersion": "1.0",
+      "definitionVersion": "1.0",
+      "variations": [
+        {
+          "type": "PlainText",
+          "value": "Are you trying to start charging at station {stationNumber}?"
+        }
+      ]
+    },
+    {
+      "id": "Elicit.Intent-StartCharging.IntentSlot-stationNumber",
+      "promptVersion": "1.0",
+      "definitionVersion": "1.0",
+      "variations": [
+        {
+          "type": "PlainText",
+          "value": "Which charging station?"
+        }
+      ]
+    }
+  ],
+  "dialog": {
+    "version": "1.0",
+    "intents": [
+      {
+        "name": "StartCharging",
+        "confirmationRequired": true,
+        "prompts": {
+          "confirm": "Confirm.Intent-StartCharging"
+        },
+        "slots": [
+          {
+            "name": "stationNumber",
+            "type": "AMAZON.NUMBER",
+            "elicitationRequired": true,
+            "confirmationRequired": false,
+            "prompts": {
+              "elicit": "Elicit.Intent-StartCharging.IntentSlot-stationNumber"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
