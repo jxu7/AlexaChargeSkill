@@ -20,6 +20,7 @@ const APP_ID = 'amzn1.ask.skill.a67277ef-80a9-45c3-8215-62474abd5e54'; // TODO r
 const stationNumberMapping = {
     68: '4265',
     70: '4267',
+    75: '4272',
     81: '4278',
 };
 
